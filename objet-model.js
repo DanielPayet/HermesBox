@@ -5,7 +5,8 @@ var ObjetSchema = new Schema({
     nom: String,
     status: String,
     url: String,
-    typeObjet: String
+    typeObjet: String,
+    enLigne: Boolean
 })
 
 module.exports = mongoose.model('Objet', ObjetSchema);

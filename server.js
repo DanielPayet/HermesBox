@@ -3,9 +3,10 @@ const express = require('express');
 const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
-var MongoClient = require('mongodb').MongoClient
 var mongoose = require('mongoose');
 var assert = require('assert');
+const Objet = require('./objet-model');
+const job = require('./jobs/job');
 
 // Get our API routes
 const api = require('./routes/api');
@@ -54,8 +55,7 @@ var db = mongoose.connection;
 
 db.once('open', function () {	
 	const server = http.createServer(app);
-	server.listen(port, () => console.log('Le serveur REST a démarré'));
+  server.listen(port, () => console.log('Le serveur REST a démarré'));
+  job.execute();
 });
-
-
 

@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const Objet = require('./objet-model');
+const Objet = require('../objet-model');
+const actualiserStatus = require('../jobs/estConnecte');
 
 router.get('/', (req, res) => {
+  actualiserStatus.miseAJourStatus();
   Objet.find(function (err, objets) {
     if (err)
       res.send(err)
@@ -18,6 +20,8 @@ router.post('/', (req,res) => {
     url: req.body.nouvel_Objet.url,
     typeObjet: req.body.nouvel_Objet.typeObjet
   });
+
+  actualiserStatus.miseAJourStatus();
 
   objet.save(function(err){
     if(err) res.send(err)

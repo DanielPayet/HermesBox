@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const request = require('request');
 const mongoose = require('mongoose');
-const Objet = require('./objet-model');
+const Objet = require('../objet-model');
 
 router.put('/:ctrl_id', function (req, res) {
   
