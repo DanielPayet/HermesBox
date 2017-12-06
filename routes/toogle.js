@@ -1,20 +1,16 @@
-const express = require('express');
-const router = express.Router();
-const path = require('path');
-var request = require('request');
+const router = require('express').Router();
 const Objet = require('../objet-model');
+const mqtt = require('mqtt');
+const client = mqtt.connect('mqtt://test.mosquitto.org:1883');
 
 /* Redirige la requete vers le controlleur */
 router.post('/:objet_id', function (req, res) {
-	let url;
-	Objet.findById(req.params.objet_id, function (err, objet) {
+	Objet.findById(req.params.objet_id, function (err, objetFromId) {
 		if (err) res.send(err);
-		url = "http://" + objet.url + ":3000/";
-	});
-	request.post({ uri: url, form: req.body }, (err) => {
-		if (err) console.log(err);
-	});
+		//client.publish(objet.url + '/toogle', req.body['setTo']);
+		client.publish('dadou974974974/toogle', req.body['setTo']);
 
+	});
 });
 
 module.exports = router;

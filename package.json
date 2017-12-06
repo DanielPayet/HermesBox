@@ -5,12 +5,16 @@
   "scripts": {},
   "private": true,
   "dependencies": {
-    "body-parser": "^1.17.2",
-    "express": "^4.15.4",
-    "mongoose": "^4.11.10",
-    "request": "^2.82.0"
+    "aws-iot-device-sdk": "^2.2.0",
+    "aws-sdk": "^2.163.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongoose": "^4.13.0",
+    "mqtt": "^2.14.0",
+    "mqtt-server": "^0.1.0",
+    "ping": "^0.2.2"
   },
   "devDependencies": {
-    "express-generator": "^4.15.0"
+    "express-generator": "^4.15.5"
   }
 }
